@@ -2,9 +2,12 @@ package io.skfx.skfxschoolmobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,4 +19,6 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(sc);
 
     }
+
+
 }

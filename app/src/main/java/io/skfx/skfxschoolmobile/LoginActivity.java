@@ -19,17 +19,27 @@ public class LoginActivity extends AppCompatActivity {
         Scanner sc = null;
         System.out.println(sc);
         Button btn = (Button)findViewById(R.id.button2);
+        Button btnl = (Button)findViewById(R.id.button);
         TextView forgetb = (TextView)findViewById(R.id.textView3);
+        btnl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                finish();
+            }
+        });
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                finish();
             }
         });
         forgetb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, ResetActivity.class));
+                finish();
             }
         });
 
