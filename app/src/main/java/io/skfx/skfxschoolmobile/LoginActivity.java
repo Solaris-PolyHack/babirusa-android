@@ -14,5 +14,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Scanner sc = null;
         System.out.println(sc);
+
     }
 }
