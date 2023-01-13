@@ -185,7 +185,6 @@
         android:backgroundTint="@null"
         android:fontFamily="@font/rl"
         android:text="Зарегаться"
-
         android:textStyle="bold"
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
