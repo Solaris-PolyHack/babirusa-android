@@ -100,7 +100,7 @@ public class QRScannerActivity extends AppCompatActivity {
                         intentData = barcodes.valueAt(0).displayValue.split("=")[1];
 
                         startActivity(new Intent(QRScannerActivity.this, MainActivity.class).putExtra("code", intentData));
-                        finish();
+
 
 
                     }
@@ -119,10 +119,7 @@ public class QRScannerActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        return;
-    }
+
     @Override
     protected void onPause() {
         super.onPause();
