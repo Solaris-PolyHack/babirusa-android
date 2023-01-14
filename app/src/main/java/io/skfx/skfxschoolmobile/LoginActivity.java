@@ -44,4 +44,10 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+    //TODO:Create function of save session
+    //example:
+    //    SharedPreferences preferences =
+    //            getSharedPreferences("com.blabla.yourapp", Context.MODE_PRIVATE);
+    //preferences.edit().putString("session", <yoursessiontoken>).commit();
+    //preferences.getString("session", "");
 }
