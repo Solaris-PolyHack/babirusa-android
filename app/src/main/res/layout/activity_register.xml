@@ -93,6 +93,21 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
+        android:id="@+id/editTextTextEmailAddress2"
+        android:layout_width="343dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/backinput"
+        android:ems="10"
+        android:hint="9М"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.632"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <EditText
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="343dp"
         android:layout_height="44dp"
@@ -119,6 +134,19 @@
         app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/rl"
+        android:text="КЛАСС"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress6"
@@ -181,15 +209,15 @@
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="300dp"
         android:layout_height="54dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@null"
         android:fontFamily="@font/rl"
         android:text="Зарегаться"
         android:textStyle="bold"
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2"
         app:strokeColor="#E5E5EA" />
 </androidx.constraintlayout.widget.ConstraintLayout>

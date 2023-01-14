@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.vision.CameraSource;
@@ -31,7 +32,6 @@ public class QRScannerActivity extends AppCompatActivity {
 
     SurfaceView surfaceView;
     TextView txtBarcodeValue;
-    Button btnAction;
     String intentData = "";
     boolean isEmail = false;
     private BarcodeDetector barcodeDetector;
@@ -40,27 +40,12 @@ public class QRScannerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_qrscanner);
-        initViews();
-    }
-
-    private void initViews() {
-
         surfaceView = findViewById(R.id.surfaceView);
 
-        btnAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (intentData.length() > 0) {
-                    if (isEmail)
-                        startActivity(new Intent(QRScannerActivity.this, MainActivity.class).putExtra("email_address", intentData));
-                    else {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(intentData)));
-                    }
-                }
-            }
-        });
     }
+
 
     private void initialiseDetectorsAndSources() {
 
@@ -69,7 +54,7 @@ public class QRScannerActivity extends AppCompatActivity {
                 .build();
 
         cameraSource = new CameraSource.Builder(this, barcodeDetector)
-                .setRequestedPreviewSize(1920, 1080)
+                .setRequestedPreviewSize(1280, 720)
                 .setAutoFocusEnabled(true)
                 .build();
 
@@ -110,30 +95,34 @@ public class QRScannerActivity extends AppCompatActivity {
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> barcodes = detections.getDetectedItems();
                 if (barcodes.size() != 0) {
-                    txtBarcodeValue.post(new Runnable() {
-                        @Override
-                        public void run() {
-                                isEmail = false;
-                                if (Objects.equals(barcodes.valueAt(0).displayValue.split("=")[0], "https://t.me/sol_babirusa_bot?start")){
-                                    intentData = barcodes.valueAt(0).displayValue.split("=")[1];
-                                    txtBarcodeValue.setText(intentData);
 
-                                }
-                                else{
-                                    Toast.makeText(getApplicationContext(), "Ссылка не распознана", Toast.LENGTH_SHORT).show();
-                                }
+                    if (Objects.equals(barcodes.valueAt(0).displayValue.split("=")[0], "https://t.me/sol_babirusa_bot?start")){
+                        intentData = barcodes.valueAt(0).displayValue.split("=")[1];
+
+                        startActivity(new Intent(QRScannerActivity.this, MainActivity.class).putExtra("code", intentData));
+                        finish();
 
 
+                    }
+                    else{
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                return;
+                            }
+                        });
 
-                                txtBarcodeValue.setText(intentData);
-                        }
-                    });
+                    }
+
                 }
             }
         });
     }
 
-
+    @Override
+    public void onBackPressed() {
+        return;
+    }
     @Override
     protected void onPause() {
         super.onPause();
